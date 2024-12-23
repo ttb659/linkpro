@@ -1,10 +1,18 @@
 import React from "react";
 import DashboardEntreprise from "./components/DashboardEntreprise";
+import LoginPage from './components/loginPage'
 
 function App() {
+  // État pour savoir si l'utilisateur est connecté
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <div className="App">
-      <DashboardEntreprise />
+      {isLoggedIn ? (
+        <DashboardEntreprise /> // Si connecté, affiche le tableau de bord
+      ) : (
+        <LoginPage onLogin={() => setIsLoggedIn(true)} /> // Sinon, affiche la page de connexion
+      )}
     </div>
   );
 }
